@@ -4,6 +4,8 @@ quiz (id SERIAL, titre TEXT, description TEXT, #utilisateur_id INT)
 theme (id SERIAL, nom TEXT)
 question (id SERIAL, description TEXT, anecdote TEXT, wiki TEXT, #quiz_id INT, #niveau_id INT, #reponse_id INT) // ici, reponse_id pointe sur la BONNE reponse à la question
 reponse (id SERIAL, description TEXT, #question_id INT) // ici, question_id permet d'obtenir la liste des réponses possibles à une question
+
+
 quiz_appartient_theme (#quiz_id INT, #theme_id INT)
 
 
