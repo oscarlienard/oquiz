@@ -3,10 +3,12 @@ const client = require('../database');
 
 class Level extends CoreModel {
 
+    id;
     name;
 
     constructor(obj) {
-        super(obj);
+//        super(obj);
+        this.id = obj.id
         this.name = obj.name;
     }
     // CRUD Create Read Update Delete
@@ -71,7 +73,7 @@ class Level extends CoreModel {
     }
 
     delete(callback) {
-        
+
     }
 
 

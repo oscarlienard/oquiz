@@ -3,7 +3,7 @@ const Level = require('./app/models/level');
 
 const controller = {
     getAllLevels: (request, response) => {
-        Level.findAll((error, levels) => {
+        const callback = (error, levels) => {
             console.log('Je suis dans le callback controller<>Model')
             if (error) {
                 console.log(error);
@@ -15,7 +15,8 @@ const controller = {
                 }
                 //response.send(levels);
             }
-        })
+        };
+        Level.findAll(callback)
     },
 
     getOneLevel: (request, response) => {
