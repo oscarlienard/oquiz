@@ -1,14 +1,22 @@
-class User {
-    id;
+const CoreModel = require('./coreModel');
+
+class User extends CoreModel {
+
     email;
     password;
     firstname;
     lastname;
 
     constructor(obj) {
+        super(obj);
         for (const propName in obj) {
-            this[propName] = obj[propName];
+            if (propName !== 'id')
+                this[propName] = obj[propName];
         }
+    }
+
+    get fullname() {
+        return `${this.firstname} ${this.lastname}`;
     }
 }
 

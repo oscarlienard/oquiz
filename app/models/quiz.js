@@ -1,11 +1,13 @@
-class Quiz {
-    id;
+const CoreModel = require('./coreModel');
+
+class Quiz extends CoreModel {
+
     title;
     description;
     user_id;
 
     constructor(obj) {
-        this.id = obj.id;
+        super(obj);
         this.title = obj.title;
         this.description = obj.description;
         this.user_id = obj.user_id;

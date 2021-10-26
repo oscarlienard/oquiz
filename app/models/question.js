@@ -1,6 +1,7 @@
-class Question {
+const CoreModel = require('./coreModel');
 
-    id;
+class Question extends CoreModel {
+
     question;
     anecdote;
     wiki;
@@ -9,8 +10,10 @@ class Question {
     quiz_id;
 
     constructor(obj) {
+        super(obj);
         for (const propName in obj) {
-            this[propName] = obj[propName];
+            if (propName !== 'id')
+                this[propName] = obj[propName];
         }
     }
 }

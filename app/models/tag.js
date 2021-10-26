@@ -1,10 +1,11 @@
-class Tag {
+const CoreModel = require('./coreModel');
 
-    id;
+class Tag extends CoreModel {
+
     name;
 
     constructor(obj) {
-        this.id = obj.id;
+        super(obj);
         this.name = obj.name;
     }
 };
