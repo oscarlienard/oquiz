@@ -5,6 +5,8 @@ class Answer extends CoreModel {
     description;
     question_id;
 
+    static tableName = 'answer';
+
 
     constructor(obj) {
         console.log('Je suis dans le constructor');

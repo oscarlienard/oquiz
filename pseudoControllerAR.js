@@ -45,7 +45,39 @@ const controller = {
                 console.log(newLevel.niceDebug());
             }
         });
+    },
+
+    updateLevel: (request, response) => {
+        const level = new Level({
+            id: 5,
+            name: 'super méga trop dur'
+        });
+
+        const callback = (error, updatedLevel) => {
+            if (error) {
+                console.log(error.message);
+            } else {
+                console.log(updatedLevel.niceDebug());
+            }
+        }
+        level.update(callback);
+    },
+
+    deleteLevel: (request, response) => {
+        const level = new Level({
+            id: 5
+        });
+
+        level.delete((error, bool) => {
+            if (error) {
+                console.log(error.message);
+            } else if (bool === true) {
+                console.log('i bon, l\'enregistrement a été viré de la BDD');
+            } else { // bool === false
+                console.log('Pas de pépin SQL MAIS aucun enregistrement trouvé pour l\'id', level.id);
+            }
+        })
     }
 }
 
-controller.insertLevel();
+controller.deleteLevel();

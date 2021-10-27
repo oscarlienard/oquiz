@@ -9,6 +9,8 @@ class Question extends CoreModel {
     answer_id;
     quiz_id;
 
+    static tableName = 'question';
+
     constructor(obj) {
         super(obj);
         for (const propName in obj) {

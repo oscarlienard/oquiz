@@ -7,6 +7,9 @@ class User extends CoreModel {
     firstname;
     lastname;
 
+    static tableName = 'user';
+
+
     constructor(obj) {
         super(obj);
         for (const propName in obj) {
