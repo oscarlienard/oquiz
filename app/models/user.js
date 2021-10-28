@@ -1,26 +1,26 @@
-const CoreModel = require('./coreModel');
+const sequelize = require('../database');
+const {DataTypes, Model} = require('sequelize');
 
-class User extends CoreModel {
-
-    email;
-    password;
-    firstname;
-    lastname;
-
-    static tableName = 'user';
-
-
-    constructor(obj) {
-        super(obj);
-        for (const propName in obj) {
-            if (propName !== 'id')
-                this[propName] = obj[propName];
-        }
-    }
+class User extends Model {
 
     get fullname() {
         return `${this.firstname} ${this.lastname}`;
     }
 }
+
+User.init({
+    email: {
+        type: DataTypes.TEXT,
+        validate: {
+            isEmail: true
+        }
+    },
+    password: DataTypes.TEXT,
+    firstname: DataTypes.TEXT,
+    lastname: DataTypes.TEXT
+}, {
+    sequelize,
+    tableName: 'user'
+});
 
 module.exports = User;

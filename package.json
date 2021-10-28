@@ -22,6 +22,7 @@
   "homepage": "https://github.com/O-clock-XIII/oquiz-blue#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "sequelize": "^6.8.0"
   }
 }

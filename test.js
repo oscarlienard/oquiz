@@ -1,10 +1,6 @@
 require('dotenv').config();
 
-const CoreModel = require('./app/models/coreModel');
-const Level = require('./app/models/level');
-const Question = require('./app/models/question');
-const Tag = require('./app/models/tag');
-const User = require('./app/models/user');
+const {Level, Question, Tag, User} = require('./app/models-old');
 
 // console.log('tableName dans CoreModel', CoreModel.tableName);
 // console.log('tableName dans Level', Level.tableName);
@@ -61,6 +57,8 @@ const controller = {
     }
 }
 
+controller.findByParams();
+
 
 //controller.findOneTag();
 
@@ -96,15 +94,15 @@ user = new User({
 //     }
 // });
 
-user.delete((error, bool) => {
-    if (error) {
-        console.log(error);
-    } else if (bool === true) {
-        console.log('Enregistrement supprimé');
-    } else {
-        console.log(`Enregistrement d'id ${user.id} non trouvé`);
-    }
-})
+// user.delete((error, bool) => {
+//     if (error) {
+//         console.log(error);
+//     } else if (bool === true) {
+//         console.log('Enregistrement supprimé');
+//     } else {
+//         console.log(`Enregistrement d'id ${user.id} non trouvé`);
+//     }
+// })
 
 
 // const tag = new Tag({
@@ -113,3 +111,66 @@ user.delete((error, bool) => {
 // });
 
 // tag.update();
+
+
+// User.findAll((error, users) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(`On a ${users.length} utilisateurs en BDD`);
+//     }
+// });
+
+
+// Question.findOne(3, (error, question) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(question);
+//     }
+// })
+
+
+// const level = new Level({
+//     name: 'Difficile et piquant'
+// });
+
+// level.insert((error, newLevel) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(newLevel.niceDebug());
+//     }
+// })
+
+// const params = {
+//     propName1: value1,
+//     propName2: value2
+// }
+
+
+// Level.findBy({
+//     name: 'Difficile et piquant',
+//     id: 9
+// }, (error, instances) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         for (const instance of instances) {
+//             console.log(instance);
+//         }
+//     }
+// });
+
+// User.findBy({
+//     firstname: 'Nico' 
+// }, (error, instances) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         for (const instance of instances) {
+//             console.log(instance);
+//         }
+//     }
+// });
+

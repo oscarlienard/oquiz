@@ -1,25 +1,14 @@
-const CoreModel = require('./coreModel');
+const sequelize = require('../database');
+const {DataTypes, Model} = require('sequelize');
 
-class Answer extends CoreModel {
+class Answer extends Model {};
 
-    description;
-    question_id;
-
-    static tableName = 'answer';
-
-
-    constructor(obj) {
-        console.log('Je suis dans le constructor');
-        //on a déporté la logique de gestion de l'id dans le CoreModel
-        //on ne réinvente aps la roue, on laisse le CoreModel initialise la valeur de l'id via son constructeur
-        super(obj);
-
-        console.log(`J'ai donné la valeur ${obj.id} à ma propriété id : ${this.id}`);
-        this.description = obj.description;
-        this.question_id = obj.question_id;
-    }
-
-};
+Answer.init({
+    description: DataTypes.TEXT
+}, {
+    sequelize,
+    tableName: 'answer'
+})
 
 // const  obj = {
 //     id: 25,

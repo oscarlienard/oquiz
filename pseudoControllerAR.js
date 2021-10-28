@@ -1,5 +1,5 @@
 require('dotenv').config();
-const Level = require('./app/models/level');
+const Level = require('./app/models-old/level');
 
 const controller = {
     getAllLevels: (request, response) => {

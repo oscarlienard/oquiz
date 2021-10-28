@@ -1,7 +1,7 @@
 require('dotenv').config();
-const client = require('./app/database');
+const client = require('./app/database-old');
 
-const Level = require('./app/models/level');
+const Level = require('./app/models-old/level');
 
 const dataMapper = {
     getAllLevels: (callback) => {

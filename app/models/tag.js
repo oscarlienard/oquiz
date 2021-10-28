@@ -1,15 +1,13 @@
-const CoreModel = require('./coreModel');
+const sequelize = require('../database');
+const {DataTypes, Model} = require('sequelize');
 
-class Tag extends CoreModel {
+class Tag extends Model {};
 
-    name;
-
-    static tableName = 'tag';
-
-    constructor(obj) {
-        super(obj);
-        this.name = obj.name;
-    }
-};
+Tag.init({
+    name: DataTypes.TEXT
+}, {
+    sequelize,
+    tableName: 'tag'
+});
 
 module.exports = Tag;

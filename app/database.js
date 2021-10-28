@@ -1,13 +1,19 @@
-//on sépare les préoccupations : Separation of Concerns
-//ce module va uniquement gérer la connexion à la BDD
+//ce module va uniquement gérer la connexion à la BDD en passant par Sequelize
 
-//import de la classe CLient du package pg
-const {Client} = require('pg');
+//on importe la class dont on a besoin pour se connecter
+const {Sequelize} = require('sequelize');
 
-const client = new Client(process.env.PG_URL);
+//on instancie le client de connexion 
+const sequelize = new Sequelize(process.env.PG_URL, {
+    define: {
+        // on ajoute une propriété pour déactiver l'ajout automatique de 2 champs qu'on n'utilise pas dans notre projet :
+        //- createdAt
+        //- updatedAt
+        timestamps: false,
+        // permet les noms de champs en snake_case
+        underscored: true
+    }
+});
 
-//on connecte le client pour le rendre prêt à l'emploi dans le reste de l'appli
-client.connect();
-console.log(`Connection to DB ${process.env.PG_URL} successful`);
-
-module.exports = client;
+//notre client est prêt à l'emploi, on l'exporte pour l'utiliser dans notre appli
+module.exports = sequelize;
