@@ -55,5 +55,12 @@ module.exports = {
         })
         
         ;
+    },
+
+    disconnect: (request, response) => {
+        //on reset le user en session
+        request.session.user = false;
+        //on redirige vers la page d'acueil
+        response.redirect('/');
     }
 };

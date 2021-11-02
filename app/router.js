@@ -4,6 +4,7 @@ const {Router} = require('express');
 const mainController = require('./controllers/mainController');
 const quizController = require('./controllers/quizController');
 const userController = require('./controllers/userController');
+const tagController = require('./controllers/tagController');
 
 const router = Router();
 
@@ -20,6 +21,16 @@ router.get('/login', userController.displayLogin);
 
 //traiter le formulaire de login
 router.post('/login', userController.validLogin)
+
+//se déconnecter
+router.get('/logout', userController.disconnect);
+
+//afficher les tags
+router.get('/tags', tagController.tagsPage);
+
+//afficher les quizzes d'un tag
+router.get('/tag/:id', tagController.quizzesByTag);
+
 
 //on exporte le routeur pour l'utiliser dans le reste de l'appli
 module.exports = router;
