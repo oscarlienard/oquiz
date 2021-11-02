@@ -95,3 +95,8 @@
     background-color: #86a78e;
     border-color: #889e8d;
   }
+
+  .error {
+    text-align: center;
+    color: red;
+  }

@@ -1,3 +1,25 @@
+## Jour 5 : formulaire d'inscription
+
+En vous inspirant de ce qu'on a fait pour la vue login, mettez en place la vue signup et le traitement adéquat :
+- ajouter une route en GET pour afficher la vue signup
+- ajouter une route en POST pour traiter les infos du formulaire :
+  - vérifier si un user existe déjà avec l'email indiqué
+  - si oui, on engueule l'utilisateur avec un message d'erreur
+  - si non, on continue
+  - vérifier si les 2 champs de mot de passe contiennent bien la même info
+  - si non, on engueule l'utilisateur
+  - si oui on continue
+  - chiffrer le mot de passe en clair avec la méthode hashSync de [bcrypt](https://www.npmjs.com/package/bcrypt)
+  - créer une insance de user avec les infos saisies et le mot de passe chiffrer
+  - sauvegarder ce nouveau user en BDD
+  - rediriger l'utilisateur sur la page de login
+
+N'hésitez pas à multiplier les console.log pour voir par où vous passez, dans quel ordre et ce que contiennent vos variables
+
+ATTENTION : n'oubliez pas de rajouter la colonne role à la table user
+
+---
+
 ## Jour 4 : Atelier, Sprint 1
 
 Fini les tests ! Maintenant qu'on a des super modèles, on va brancher tout ça dans une archi Express !

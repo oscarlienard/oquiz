@@ -3,7 +3,8 @@ require('dotenv').config();
 
 const express = require('express');
 const router = require('./app/router');
-
+const session = require('express-session');
+const userMW = require('./app/middlewares/userMW');
 
 const app = express();
 
@@ -21,6 +22,19 @@ app.set('views', './app/views');
 //on ne va pas utiliser les fichiers html tels quels mais des vues EJS
 //le middleware static servira uniquement pour les fichiers css
 app.use(express.static('./integration/css'));
+
+//on va recevoir certaines données du user en POST
+//elles seront stockées par express dans request.body MAIS il faut lui indiquer dans quel format il va les recevoir afin qu'il les décode correctement
+app.use(express.urlencoded({extended: true}))
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true
+}));
+
+//middleware maison pour initiliser la communication entre la session express et les vues EJS
+app.use(userMW);
 
 //TODO : ajouter un router
 app.use(router);

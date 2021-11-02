@@ -24,8 +24,16 @@
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-white" href="/">Accueil</a>
             <a class="p-2 text-white" href="#">Sujets</a>
-            <a class="p-2 text-white" href="#">S'inscrire</a>
-            <a class="p-2 text-white" href="#">Se connecter</a>
+            <%# pour vérifier si un utilisateur est connecté, on peut vérifier le contenu de la propriété user en session
+            Si elle vaut false, pas connecté, on affiche les 2 liens s'inscrire et se connecter
+            Si elle vaut autre chose que false, user connecté, on affiche un lien deconnexion %>
+            <% if (user) {%> 
+                <a class="p-2 text-white" href="#">Bonjour <%= user.name %></a>
+                <a class="p-2 text-white" href="#">Déconnexion</a>
+            <%} else {%>
+                <a class="p-2 text-white" href="#">S'inscrire</a>
+                <a class="p-2 text-white" href="/login">Se connecter</a>
+            <%}%>
         </nav>
     </header>
     <main class="container">
