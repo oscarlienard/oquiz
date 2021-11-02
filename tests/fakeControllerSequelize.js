@@ -1,7 +1,6 @@
 require('dotenv').config();
 
-const { Question } = require('./app/models copy');
-const {User, Level, Quiz, Tag} = require('./app/models/');
+const {User, Level, Quiz, Tag} = require('../app/models');
 
 // User.findAll({
 //     include: 'quizzes'
