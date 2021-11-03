@@ -1,3 +1,9 @@
+## Jour 6 : Promesses !
+
+Votre mission du jour : terminer la transformation des middlewares dans les contrôleurs de l'appli
+
+Les seuls middlewares à modifier sont ceux qui font des requêtes vers la BDD
+
 ## Jour 5 : formulaire d'inscription
 
 En vous inspirant de ce qu'on a fait pour la vue login, mettez en place la vue signup et le traitement adéquat :
