@@ -5,6 +5,9 @@ const mainController = require('./controllers/mainController');
 const quizController = require('./controllers/quizController');
 const userController = require('./controllers/userController');
 const tagController = require('./controllers/tagController');
+const adminController = require('./controllers/adminController');
+
+const adminMW = require('./middlewares/adminMW')
 
 const router = Router();
 
@@ -22,6 +25,15 @@ router.get('/login', userController.displayLogin);
 //traiter le formulaire de login
 router.post('/login', userController.validLogin)
 
+
+//afficher le formulaire de signup
+router.get('/signup', userController.displaySignup);
+
+//traiter le formulaire de signup
+router.post('/signup', userController.validSignup)
+
+
+
 //se déconnecter
 router.get('/logout', userController.disconnect);
 
@@ -30,6 +42,14 @@ router.get('/tags', tagController.tagsPage);
 
 //afficher les quizzes d'un tag
 router.get('/tag/:id', tagController.quizzesByTag);
+
+
+//interface d'administration
+//cette route sera protégée, gardée par le middleware adminMW
+//seuls les utilisateurs connectés ET avec le role admin pourront accéder au middleware showInterface
+router.get('/admin', adminMW, adminController.showInterface);
+
+
 
 
 //on exporte le routeur pour l'utiliser dans le reste de l'appli

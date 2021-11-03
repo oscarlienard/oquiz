@@ -29,9 +29,12 @@
             Si elle vaut autre chose que false, user connecté, on affiche un lien deconnexion %>
             <% if (user) {%> 
                 <a class="p-2 text-white" href="#">Bonjour <%= user.name %></a>
+                <% if (user.role === 'admin') {%>
+                    <a class="p-2 text-white" href="/admin">Admin</a>
+                <% } %>
                 <a class="p-2 text-white" href="/logout">Déconnexion</a>
             <%} else {%>
-                <a class="p-2 text-white" href="#">S'inscrire</a>
+                <a class="p-2 text-white" href="/signup">S'inscrire</a>
                 <a class="p-2 text-white" href="/login">Se connecter</a>
             <%}%>
         </nav>
