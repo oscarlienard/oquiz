@@ -1,3 +1,80 @@
+## Jour 7 : Parcours, Sprint 3
+
+### Pouvoir répondre aux questions d’un quiz
+
+- Commencer par dupliquer la view 'quiz'. Renommer la copie "play_quiz"
+- Transformer la view "play_quiz" pour qu'elle contienne un formulaire POST.
+- Chaque réponse possible doit être un bouton radio.
+- Nommer correctement les boutons radio pour qu'on ne puisse pas choisir plusieurs réponses à la même question.
+- Mais on doit quand même pouvoir répondre à toutes les questions !
+
+<details>
+<summary>Un peu d'aide</summary>
+
+Voici à quoi doit ressembler le HTML "renderisé" :
+
+```HTML
+<div class="col-12">
+    <label class="badge level level--débutant">Débutant</label>
+    <h4>
+        Dans le film d'animation L'Âge de glace, qu'est-ce qui échappe à l'écureuil Scrat ?
+    </h4>
+    <ul class="list-unstyled ml-5">
+        <li>
+            <input type="radio" name="question_1" id="answer_1_1" value="1">
+            <label for="answer_1_1">Un gland</label>
+        </li>
+        <li>
+            <input type="radio" name="question_1" id="answer_1_2" value="2">
+            <label for="answer_1_2">Une pierre</label>
+        </li>
+        <li>
+            <input type="radio" name="question_1" id="answer_1_3" value="3">
+            <label for="answer_1_3">Un os</label>
+        </li>
+        <li>
+            <input type="radio" name="question_1" id="answer_1_4" value="4">
+            <label for="answer_1_4">Une bille</label>
+        </li>
+    </ul>
+</div>
+```
+</details>
+
+Dans la route `/quiz/:id`, tester si un utilisateur est connecté. Si c'est le cas, on renvoie la view "play_quiz". Sinon on renvoie la view sans formulaire ("quiz")
+
+Coder ensuite la route POST qui va gérer la soumission du formulaire.
+
+### Pouvoir visualiser mon score
+
+Dans la route qui gère la soumission du formulaire, comparer les données utilisateurs aux bonnes réponses des questions du Quizz.
+
+Chaque bonne réponse donne un point (on ne s'occupe pas de la difficulté de la question).
+
+Renvoyer ensuite une belle view avec le résultat !
+
+### Pouvoir visualiser les bonnes et mauvaises réponses que j’ai donné
+
+Modifier la view précédente pour y intégrer quelles étaient les bonnes et les mauvaises réponses de l'utilisateur.
+
+### Bonus 1 : Ajouter un nouveau Tag
+
+CETTE FONCTIONNALITÉ NE DOIT ÊTRE ACCESSIBLE QU'AUX ADMINS !
+
+- 2 nouvelles routes ("get" et "post")
+- un formulaire
+- ¯\\\_(ツ)_/¯ pour le reste à toi de jouer.
+
+### Bonus 2 : Modifier un Tag existant
+
+CETTE FONCTIONNALITÉ NE DOIT ÊTRE ACCESSIBLE QU'AUX ADMINS !
+
+### Bonus 3 (AKA "bonus de la mort") : Associer un Tag à un Quiz
+
+CETTE FONCTIONNALITÉ NE DOIT ÊTRE ACCESSIBLE QU'AUX ADMINS !
+
+---
+
 ## Jour 6 : Promesses !
 
 Votre mission du jour : terminer la transformation des middlewares dans les contrôleurs de l'appli

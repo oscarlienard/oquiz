@@ -16,8 +16,11 @@ const router = Router();
 //page d'accueil
 router.get('/', mainController.home);
 
-//détails d'un quiz
+//afficher le détails d'un quiz
 router.get('/quiz/:id', quizController.quizDetails);
+//analyser les réponses à un quiz
+router.post('/quiz/:id', quizController.quizzAnswer);
+
 
 //afficher le formulaire de login
 router.get('/login', userController.displayLogin);
