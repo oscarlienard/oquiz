@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+        <% console.log('dans la vue') %>
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h2 class="h1 display-4">Associer un tag à un quiz</h2>
+        </div>
+        <% if (locals.error) {%>
+            <div class="error"><%= error %></div>
+        <%}%>
+        <% if (locals.result) {%>
+            <div class="result"><%= result %></div>
+        <%}%>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form action="/tag/associate" method="POST" class="form-signup">
+
+                    <label>Associer le tag</label>
+                    <div class="form-label-group">
+                        <select class="form-control" id="tag" name="tag" aria-describedby="tagHelp">
+                            <% for (const tag of tags) {%>
+                                <option value="<%= tag.id %>"><%= tag.name %></option>
+                            <%}%>
+                        </select>
+                    </div>
+
+                    <label>au quiz</label>
+                    <div class="form-label-group">
+                        <select class="form-control" id="quiz" name="quiz" aria-describedby="quizHelp">
+                            <% for (const quiz of quizzes) {%>
+                                <option value="<%= quiz.id %>"><%= quiz.title %></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Associer</button>
+                </form>
+            </div>
+        </div>
+<%- include('partials/footer') %>

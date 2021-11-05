@@ -43,6 +43,25 @@ router.get('/logout', userController.disconnect);
 //afficher les tags
 router.get('/tags', tagController.tagsPage);
 
+
+//l'ordre des routes est important ici
+//une route de format /tag/xxx peut matcher avec la route /tag/:id
+//pour éviter les conflits, on place ces routes AVANT la route paramétrée
+
+//ajout d'un tag
+router.get('/tag/add', adminMW, tagController.addTagForm);
+router.post('/tag/add', adminMW, tagController.addTagHandle);
+
+//modifier un tag
+router.get('/tag/select', adminMW, tagController.selectTag);
+router.get('/tag/modify/:id', adminMW, tagController.modifyTagForm);
+router.post('/tag/modify', adminMW, tagController.modifyTagHandle);
+
+//Associer un tag à un quiz
+router.get('/tag/associate', adminMW, tagController.associateTagForm);
+router.post('/tag/associate', adminMW, tagController.associateTagHandle);
+
+
 //afficher les quizzes d'un tag
 router.get('/tag/:id', tagController.quizzesByTag);
 
