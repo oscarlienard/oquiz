@@ -11,27 +11,33 @@
 
         <div class="row">
             <div class="col-6 offset-3">
-                <form action="" method="POST" class="form-signup">
-
+                <form action="/login" method="POST" class="form-signup">
+        
                     <div class="form-label-group">
+                        <%# on passera également les champs saisis par l'utilisateur pour les réafficher en cas d'erreur
+                        on fait une condition ternaire ici, c'est plus court
+                        SI le champ est disponible, on le met dans l'attribut value
+                        SINON, on met une chaine vide dans value (valeur par défaut) %>
                         <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                            placeholder="Votre courriel">
+                            placeholder="Votre courriel" value=<%= locals.fields ? locals.fields.email : '' %>>
                         <label for="email">Votre courriel</label>
                     </div>
-
+        
                     <div class="form-label-group">
+                        <%# même chose ici : si on a le mot de passe, on rempli le champ sinon, chaine vide %>
                         <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Votre mot de passe">
+                            placeholder="Votre mot de passe" value=<%= locals.fields ? locals.fields.password : '' %>>
                         <label for="password">Votre mot de passe</label>
                     </div>
                     <div class="checkbox mb-3">
                         <label>
-                            <input type="checkbox" value="remember-me" name="remember"> Se souvenir de moi
+                            <%# on n'oublie pas de renseigner l'attribut name pour que la valeur puisse être passée %>
+                            <input type="checkbox" name="remember" value="remember-me"> Se souvenir de moi
                         </label>
                     </div>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
                 </form>
             </div>
         </div>
-
+        
 <%- include('partials/footer') %>

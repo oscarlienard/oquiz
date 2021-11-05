@@ -68,7 +68,8 @@ module.exports = {
             //si non, on engueule l'utilisateur en lui disant de vérifier sa saisie
             if (!user) { // if (user === undefined || user === null || user === 0 || user ===false || user === '')
                 //on n'a trouvé aucun user enregistré avec cet email
-                return response.render('login', {error: 'Vérifiez votre saisie'})
+                //on affiche une erreur et les champs saisis
+                return response.render('login', {error: 'Vérifiez votre saisie', fields: request.body})
             }
 
             
@@ -79,7 +80,7 @@ module.exports = {
             //si ça matche pas, on engueule l'utilisateur en lui disant de vérifier sa saisie
             if (isPwdValid === false) { // if (user === undefined || user === null || user === 0 || user ===false || user === '')
                 //on n'a trouvé aucun user enregistré avec cet email
-                return response.render('login', {error: 'Vérifiez votre saisie'})
+                return response.render('login', {error: 'Vérifiez votre saisie', fields: request.body})
             }
             //si ça matche, on continue
             //mise en place de la session de ce user pour faire persister le fait qu'il est connecté
@@ -168,13 +169,13 @@ module.exports = {
             
             if (user) { // if (user !== undefined)
                 // il ya déjà un user avec cet email en BDD, on envoie une erreur
-                return response.render('signup', {error: 'Un utilisateur avec cet email existe déjà'});
+                return response.render('signup', {error: 'Un utilisateur avec cet email existe déjà', fields: request.body});
             }
 
             // on checke si le mot de passe et sa vérification correspondent
             if (request.body.password !== request.body.passwordConfirm) {
                 //le password et la vérif ne matchent pas, on envoie une erreur
-                return response.render('signup', {error: 'La confirmation du mot de passe est incorrecte'});
+                return response.render('signup', {error: 'La confirmation du mot de passe est incorrecte', fields: request.body});
             }
 
             const hashedPwd = await bcrypt.hash(request.body.password, 10);
