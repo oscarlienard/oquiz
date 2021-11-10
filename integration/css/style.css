@@ -1,15 +1,15 @@
 .btn-primary, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle, .btn-primary.focus, .btn-primary:focus {
-    background-color: #00c4a7;
-    border-color: rgb(35, 70, 120);
+    background-color: #004085;
+    border-color: rgb(0, 0, 0);
   }
   
   .btn-primary:hover {
-    background-color: rgb(10, 195, 167);
-    border-color: rgb(35, 70, 120);
+    background-color: #1065bf;
+    border-color: rgb(0, 0, 0);
   }
   
   .bg-primary {
-    background-color: #00c4a7!important;
+    background-color: #004085!important;
   }
   
   .form-signin {
@@ -130,4 +130,14 @@
   .result {
     text-align: center;
     color: rgb(25, 0, 255);
+  }
+
+  .card-header {
+    background-color: rgba(0,0,0,.2);
+    border-bottom : 2px solid rgba(0,0,0,.125)
+  }
+
+  .card-body {
+    background-color: rgba(0,0,0,.08);
+    border-bottom : 2px solid rgba(0,0,0,.125)
   }

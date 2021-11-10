@@ -27,7 +27,6 @@ module.exports = {
             const quizzes = await Quiz.findAll({
                 include: 'author'
             });
-            console.log('ayé, la BDD m\'a répondu');
             response.render('index', {quizzes});
         } catch (error) {
             console.log(error.message);
@@ -35,7 +34,6 @@ module.exports = {
         }
 
         // ATTENTION : tout code placé en dehors de la fonction du .then sera exécuté AVANT d'avoir eu un résultat de la BDD
-        console.log('Je suis en dehors des callbacks de la requête');
     }
 
 };
